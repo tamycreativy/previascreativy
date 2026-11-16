@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta name="robots" content="noindex,nofollow">
+<style>
+#cv-prev{position:fixed;left:0;right:0;bottom:0;z-index:2147483647;pointer-events:none;text-align:center;padding:6px 10px calc(6px + env(safe-area-inset-bottom,0px));background:rgba(0,0,0,.72);color:#fff;font:600 12px/1.3 system-ui,sans-serif;letter-spacing:.03em}
+#cv-exp{position:fixed;inset:0;z-index:2147483647;background:#111;color:#fff;display:none;align-items:center;justify-content:center;text-align:center;padding:30px;font:500 18px/1.5 system-ui,sans-serif}
+#cv-toast{position:fixed;left:50%;top:18%;transform:translateX(-50%);z-index:2147483647;background:rgba(0,0,0,.85);color:#fff;padding:12px 18px;border-radius:14px;font:500 15px/1.35 system-ui,sans-serif;max-width:80%;text-align:center;opacity:0;transition:opacity .25s;pointer-events:none}
+img,video{-webkit-user-drag:none;user-select:none;-webkit-touch-callout:none}
+</style>
+<script>
+(function(){
+  var CLIENTE="Teste Creativy",FIM=1795182735049;
+  function bar(){var b=document.createElement('div');b.id='cv-prev';b.textContent='PRÉVIA • Creativy • '+CLIENTE+' • válida até '+new Date(FIM).toLocaleDateString('pt-BR')+' • não é o convite final';document.body.appendChild(b);
+    var t=document.createElement('div');t.id='cv-toast';document.body.appendChild(t);window.__cvToast=function(m){t.textContent=m;t.style.opacity=1;clearTimeout(t._h);t._h=setTimeout(function(){t.style.opacity=0},2600)}}
+  function expira(){var e=document.createElement('div');e.id='cv-exp';e.innerHTML='<div>Esta prévia expirou.<br>Fale com a Creativy para receber o convite final.<br><br><small>@creativy.convites</small></div>';document.body.appendChild(e);e.style.display='flex';
+    document.querySelectorAll('video,audio').forEach(function(m){try{m.pause();m.removeAttribute('src');m.load()}catch(x){}});
+    document.documentElement.style.overflow='hidden'}
+  function ini(){bar();if(Date.now()>FIM)expira()}
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',ini);else ini();
+  setInterval(function(){if(Date.now()>FIM&&!document.getElementById('cv-exp'))expira()},30000);
+  /* sem copiar/salvar */
+  ['contextmenu','dragstart','selectstart'].forEach(function(ev){document.addEventListener(ev,function(e){e.preventDefault()})});
+  /* na prévia, confirmação por WhatsApp fica desligada */
+  var _open=window.open;
+  window.open=function(u){if(typeof u==='string'&&/wa\.me|whatsapp/i.test(u)){window.__cvToast&&window.__cvToast('Na prévia a confirmação por WhatsApp fica desligada. Ela funciona no convite final.');return null}return _open.apply(window,arguments)};
+  document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href]');if(a&&/wa\.me|whatsapp/i.test(a.getAttribute('href'))){e.preventDefault();e.stopPropagation();window.__cvToast&&window.__cvToast('Na prévia a confirmação por WhatsApp fica desligada. Ela funciona no convite final.')}},true);
+})();
+</script>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Bianca 13 anos • Convite</title>
+<meta property="og:title" content="Bianca 13 anos • Convite">
+<meta property="og:image" content="assets/capa.webp">
+<link href="https://fonts.googleapis.com/css2?family=Henny+Penny&family=Patrick+Hand&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;background:#05060d;color:#fff;font-family:'Patrick Hand',system-ui,sans-serif}
+body{overflow:hidden}
+.scr{position:fixed;inset:0;overflow:hidden}
+.bg{position:absolute;inset:-10%;background-size:cover;background-position:center;filter:blur(24px) brightness(.5)}
+.stage{position:absolute;top:0;bottom:0;left:50%;transform:translateX(-50%);aspect-ratio:9/16;max-width:100%;height:100%;background:#000}
+.stage video,.stage img.capa{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+#capaImg{cursor:pointer;transition:opacity .15s}
+#capaImg.off{opacity:0;pointer-events:none}
+.dica{position:absolute;left:0;right:0;bottom:7%;text-align:center;font-family:'Henny Penny',cursive;font-size:clamp(18px,5.2vw,30px);color:#ffd77a;text-shadow:0 0 12px #ff9d00,0 2px 6px #000;animation:pulse 2s ease-in-out infinite;pointer-events:none;transition:opacity .15s}
+.off+.dica{opacity:0;animation:none}
+@keyframes pulse{50%{opacity:.55;transform:scale(.97)}}
+#pular{position:absolute;right:14px;top:max(14px,env(safe-area-inset-top));z-index:5;background:rgba(0,0,0,.5);color:#fff;border:1px solid #ffffff66;border-radius:20px;padding:6px 14px;font:inherit;font-size:16px;display:none}
+#inv{display:none;opacity:0;transition:opacity .9s;background:#05060d;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;z-index:10}
+#inv.show{display:block}
+#inv.vis{opacity:1}
+#pg{position:relative;width:min(100vw,560px);margin:0 auto;background:#05060d}
+#pg img{display:block;width:100%;height:auto}
+.hs{position:absolute;display:block;border:0;background:transparent;cursor:pointer;z-index:3;padding:0}
+.hs:active{background:#ffd77a33;border-radius:10px}
+/* paineis */
+.ov{position:fixed;inset:0;background:#000a;z-index:20;display:none;align-items:flex-end;justify-content:center}
+.ov.on{display:flex}
+.sheet{width:min(100%,480px);background:linear-gradient(#1a2038,#0d1124);border:2px solid #c9a35a;border-radius:20px 20px 0 0;padding:20px 18px calc(22px + env(safe-area-inset-bottom));animation:up .3s}
+@keyframes up{from{transform:translateY(40px);opacity:0}}
+.sheet h3{margin:0 0 4px;font-family:'Henny Penny',cursive;font-weight:400;font-size:24px;color:#ffd77a;text-align:center}
+.sheet p.s{margin:0 0 14px;text-align:center;opacity:.8;font-size:17px}
+.sheet label{display:block;margin:10px 0 4px;font-size:18px;color:#ffe9b8}
+.sheet input[type=text],.sheet input[type=number]{width:100%;padding:11px 12px;border-radius:10px;border:1px solid #c9a35a;background:#0a0e1d;color:#fff;font:inherit;font-size:19px}
+.btn{display:block;width:100%;margin-top:14px;padding:13px;border:0;border-radius:12px;background:linear-gradient(#ffd77a,#d9a441);color:#1a1530;font:inherit;font-size:21px;font-weight:700;cursor:pointer}
+.btn.g{background:transparent;color:#ffd77a;border:1px solid #c9a35a;margin-top:8px;font-size:18px;font-weight:400}
+.aviso{margin-top:12px;font-size:15.5px;line-height:1.3;background:#ffffff12;border-left:3px solid #ffd77a;padding:8px 10px;border-radius:6px;color:#ffe9b8}
+.opt{display:flex;gap:8px}
+.opt button{flex:1;padding:11px 6px;border-radius:10px;border:1px solid #c9a35a;background:#0a0e1d;color:#fff;font:inherit;font-size:18px}
+.opt button.sel{background:#ffd77a;color:#1a1530;font-weight:700}
+.pl{display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:6px}
+.pl button{width:56px;height:56px;border-radius:50%;border:2px solid #ffd77a;background:#0a0e1d;color:#ffd77a;font-size:24px}
+.pl span{font-size:18px}
+.miss{display:none;text-align:center;opacity:.7;font-size:16px;margin-bottom:6px}
+</style>
+</head>
+<body>
+<section class="scr" id="vid">
+  <div class="bg" style="background-image:url(assets/capa.webp)"></div>
+  <div class="stage">
+    <video id="v" src="assets/abertura.mp4" poster="assets/capa.webp" playsinline preload="auto"></video>
+    <img class="capa" id="capaImg" src="assets/capa.webp" alt="Convite Bianca 13 anos">
+    <div class="dica">Clique no envelope para abrir</div>
+  </div>
+  <button id="pular">Pular ▸</button>
+</section>
+
+<section class="scr" id="inv">
+  <div id="pg">
+    <img id="pgImg" src="assets/pagina.webp" alt="Convite Bianca 13 anos">
+    <button class="hs" id="hLua" aria-label="Tocar ou pausar música" style="left:81.66%;top:0;width:18.34%;height:5.31%"></button>
+    <a class="hs" id="hMapa" aria-label="Ver no mapa" target="_blank" rel="noopener" style="left:19.09%;top:83.24%;width:17.23%;height:1.38%"></a>
+    <button class="hs" id="hConf" aria-label="Confirmar presença" style="left:46.28%;top:84.97%;width:29.8%;height:3.46%"></button>
+  </div>
+</section>
+
+<audio id="bgm" loop preload="auto"></audio>
+
+<!-- presença -->
+<div class="ov" id="ovRsvp"><div class="sheet">
+  <h3>Confirmar presença</h3>
+  <p class="s">Bianca • 13 anos</p>
+  <label for="nome">Seu nome</label>
+  <input type="text" id="nome" placeholder="Nome completo">
+  <label>Você vai?</label>
+  <div class="opt"><button id="oSim" class="sel">Vou sim! 🎉</button><button id="oNao">Não poderei ir</button></div>
+  <div id="qtdBox"><label for="qtd">Quantas pessoas (contando você)?</label>
+  <input type="number" id="qtd" min="1" max="10" value="1"></div>
+  <button class="btn" id="rsGo">Confirmar pelo WhatsApp</button>
+  <div class="aviso">📲 Ao confirmar, você será levado ao WhatsApp com a mensagem pronta. É só apertar enviar para a confirmação chegar à anfitriã.</div>
+  <button class="btn g" data-close>Fechar</button>
+</div></div>
+
+<script>
+const CONFIG={
+  whatsapp:'5585996354515',
+  aniversariante:'Bianca',
+  local:'Buffet Magia Festas, Rua Esperança 6767',
+  musica:'assets/musica.mp3'
+};
+const $=id=>document.getElementById(id);
+const bgm=$('bgm'),v=$('v');
+let musicOk=true,wantMusic=true,started=false;
+
+/* música em loop */
+bgm.src=CONFIG.musica;bgm.volume=.6;
+bgm.addEventListener('error',()=>{musicOk=false});
+function playBgm(){if(musicOk&&wantMusic)bgm.play().catch(()=>{})}
+setInterval(()=>{ if(started&&wantMusic&&musicOk&&bgm.paused&&$('inv').classList.contains('show'))bgm.play().catch(()=>{}) },900);
+$('hLua').onclick=()=>{ if(!musicOk)return; if(bgm.paused){wantMusic=true;bgm.play().catch(()=>{})}else{wantMusic=false;bgm.pause()} };
+
+$('hMapa').href='https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(CONFIG.local);
+
+/* abertura: o clique já roda o vídeo */
+let done=false,going=false;
+const pgImg=$('pgImg');
+$('capaImg').addEventListener('click',()=>{
+  if(started)return;started=true;
+  v.currentTime=0;
+  const p=v.play();
+  const hide=()=>{$('capaImg').classList.add('off');$('pular').style.display='block'};
+  v.addEventListener('playing',hide,{once:true});
+  setTimeout(hide,900);
+  if(p&&p.catch)p.catch(()=>{v.muted=true;v.play().catch(toInv)});
+  requestAnimationFrame(vigia);
+});
+function vigia(){
+  if(done)return;
+  if(v.duration&&v.currentTime>=v.duration-0.9)transicao();
+  else requestAnimationFrame(vigia);
+}
+function transicao(){
+  if(going)return;going=true;
+  const go=()=>{
+    $('inv').classList.add('show');
+    requestAnimationFrame(()=>requestAnimationFrame(()=>$('inv').classList.add('vis')));
+    playBgm();
+    setTimeout(()=>{done=true;v.pause();$('vid').style.display='none';$('pular').style.display='none'},1000);
+  };
+  (pgImg.decode?pgImg.decode():Promise.resolve()).then(go,go);
+}
+function toInv(){transicao()}
+$('pular').onclick=toInv;
+v.addEventListener('ended',toInv);
+v.addEventListener('error',toInv);
+
+/* painel de presença */
+document.querySelectorAll('[data-close]').forEach(b=>b.onclick=()=>b.closest('.ov').classList.remove('on'));
+document.querySelectorAll('.ov').forEach(o=>o.addEventListener('click',e=>{if(e.target===o)o.classList.remove('on')}));
+$('hConf').onclick=()=>$('ovRsvp').classList.add('on');
+function wa(msg){
+  const n=(CONFIG.whatsapp||'').replace(/\D/g,'');
+  window.open('https://wa.me/'+n+'?text='+encodeURIComponent(msg),'_blank');
+}
+let vai=true;
+$('oSim').onclick=()=>{vai=true;$('oSim').classList.add('sel');$('oNao').classList.remove('sel');$('qtdBox').style.display=''};
+$('oNao').onclick=()=>{vai=false;$('oNao').classList.add('sel');$('oSim').classList.remove('sel');$('qtdBox').style.display='none'};
+$('rsGo').onclick=()=>{
+  const n=$('nome').value.trim();if(!n){$('nome').focus();return}
+  const q=Math.max(1,parseInt($('qtd').value)||1);
+  wa(vai?('Olá! Aqui é '+n+'. Confirmo presença na festa da '+CONFIG.aniversariante+' 🎉\nTotal de pessoas: '+q)
+         :('Olá! Aqui é '+n+'. Infelizmente não poderei ir na festa da '+CONFIG.aniversariante+'. Obrigado(a) pelo convite!'));
+};
+</script>
+</body>
+</html>
